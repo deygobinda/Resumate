@@ -18,28 +18,28 @@ if (!PUBLISHABLE_KEY) {
 
 const route = createBrowserRouter([
   {
-    element : <App/>,
-    children  : [
+    element: <App />,
+    children: [
       {
-        path : '/',
-        element : <Home/>
-      },
-      {
-        path : '/dashboard',
-        element : <Dashboard/>
+        path: '/dashboard',
+        element: <Dashboard />
       }
     ]
   },
   {
-    path:'/auth/sing-in',
-    element: <SingInPage/>
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/auth/sign-in',
+    element: <SingInPage />
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <RouterProvider router={route}/>
+      <RouterProvider router={route} />
     </ClerkProvider>
   </StrictMode>,
 )
