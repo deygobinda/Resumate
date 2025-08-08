@@ -7,6 +7,14 @@ import SingInPage from './auth/sign-in'
 import { RouterProvider } from 'react-router'
 import Home from './home'
 import Dashboard from './dashboard'
+import { ClerkProvider } from '@clerk/clerk-react'
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error('Missing Publishable Key')
+}
+
 
 const route = createBrowserRouter([
   {
@@ -30,6 +38,8 @@ const route = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={route}/>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <RouterProvider router={route}/>
+    </ClerkProvider>
   </StrictMode>,
 )

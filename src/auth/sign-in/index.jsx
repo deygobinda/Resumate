@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/button'
+import { SignIn } from '@clerk/clerk-react'
 import React from 'react'
 
 const SingInPage = () => {
   return (
-    <div>
-      <Button>Hello Gobinda Get a very good job </Button>
+    <div className='flex justify-center items-center my-20'>
+      <SignIn/>
     </div>
   )
 }
