@@ -1,6 +1,4 @@
 import Header from '@/components/custom/Header'
-import { Button } from '@/components/ui/button'
-import { SignOutButton, UserButton, useUser } from '@clerk/clerk-react'
 import React from 'react'
 
 const Home = () => {
@@ -9,9 +7,6 @@ const Home = () => {
     <div >
       <Header/>
       Landing Screen
-      <Button>
-        <SignOutButton/>
-      </Button>
     </div>
   )
 }
