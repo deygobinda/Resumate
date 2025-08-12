@@ -15,25 +15,31 @@ import { Input } from '@/components/ui/input'
 import { v4 as uuidv4 } from 'uuid';
 import { useUser } from '@clerk/clerk-react'
 import GlobalApi from '../../../services/GlobalApi.js'  
+import { useNavigate } from 'react-router-dom'
 
 const AddResume = () => {
     const [resumeTitle, setResumetitle] = useState("")
     const { user } = useUser()
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate()
 
     const handleSubmit = () => {
         setIsLoading(true)
+        const uuid = uuidv4()
         const resumeData = {
             data: {
                 title: resumeTitle,
-                resumeId: uuidv4(),
+                resumeId: uuid,
                 userEmail: user?.primaryEmailAddress?.emailAddress,
                 userName: user?.fullName
             }
         }
         GlobalApi.createNewResume(resumeData).then(res => {
-            console.log(res)
-            if (res) setIsLoading(false)
+            console.log(res.data.data.documentId)
+            if (res) {
+                setIsLoading(false)
+                navigate('/dashboard/resume/'+res.data.data.documentId+'/edit')
+            }
         }, (error) => {
             setIsLoading(false)
             console.log(error)

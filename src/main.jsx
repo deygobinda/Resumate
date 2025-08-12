@@ -7,7 +7,9 @@ import SingInPage from './auth/sign-in'
 import { RouterProvider } from 'react-router'
 import Home from './home'
 import Dashboard from './dashboard'
-import { ClerkProvider } from '@clerk/clerk-react'
+import { ClerkProvider, SignUp } from '@clerk/clerk-react'
+import EditResume from './dashboard/resume/[resumeid]/edit'
+import SignUpPage from './auth/sign-up'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -23,6 +25,10 @@ const route = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard />
+      },
+      {
+        path : '/dashboard/resume/:resumeId/edit',
+        element : <EditResume/>
       }
     ]
   },
@@ -33,6 +39,10 @@ const route = createBrowserRouter([
   {
     path: '/auth/sign-in',
     element: <SingInPage />
+  },
+  {
+    path: '/auth/sign-up',
+    element: <SignUpPage />
   }
 ])
 
