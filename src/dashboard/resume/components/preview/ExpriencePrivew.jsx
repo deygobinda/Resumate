@@ -13,7 +13,10 @@ const ExpriencePrivew = ({ resumeInfo }) => {
 
       {resumeInfo?.experience.map((experience, index) => (
         <div key={index} className='my-5'>
-          <div className='flex justify-between'>
+          <div className='flex justify-between'
+            style={{
+              color: resumeInfo?.themeColor
+            }}>
             <h2 className='text-sm font-bold'>{experience?.title}</h2>
             <span className='text-xs'>{experience.startDate} to  {experience?.currentlyWorking ? "Present" : experience?.endDate}</span>
           </div>
