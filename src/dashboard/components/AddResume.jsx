@@ -35,14 +35,12 @@ const AddResume = () => {
             }
         }
         GlobalApi.createNewResume(resumeData).then(res => {
-            console.log(res.data.data.documentId)
             if (res) {
                 setIsLoading(false)
                 navigate('/dashboard/resume/'+res.data.data.documentId+'/edit')
             }
         }, (error) => {
             setIsLoading(false)
-            console.log(error)
         })
     }
     return (
