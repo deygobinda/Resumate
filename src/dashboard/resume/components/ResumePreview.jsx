@@ -1,4 +1,4 @@
-import { ResumeInfoContex } from '@/contex/ResumeInfoContex'
+import {  ResumeInfoContext } from '@/context/ResumeInfoContext'
 import React, { useContext } from 'react'
 import PersonalDetailedPreview from './preview/PersonalDetailedPreview'
 import SummaryPreview from './preview/SummaryPreview'
@@ -7,7 +7,7 @@ import EducationalPreview from './preview/EducationalPreview'
 import SkillsPreview from './preview/SkillsPreview'
 
 const ResumePreview = () => {
-  const {resumeInfo  , setResumeInfo} = useContext(ResumeInfoContex)
+  const {resumeInfo  , setResumeInfo} = useContext(ResumeInfoContext)
   return (
     <div className='shadow-lg h-full p-14 border-t-[20px]'
     style={{

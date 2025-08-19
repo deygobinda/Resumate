@@ -40,6 +40,44 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+  @media print{
+    #no-print{
+      display: none;
+    }
+
+    #print-area{
+      display: block;
+    }
+
+    body{
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+  }
+
+  @page{
+    size: auto;
+    margin: 0mm;
+  }
+
+  
+
+  .rsw-ce ul {
+    list-style: disc;
+    padding-left: 2em;
+  }
+  
+  .rsw-ce ol {
+    list-style: decimal;
+    padding-left: 2em;
+  }
+
+  ol, ul, menu {
+    list-style: disc;
+    margin: 0;
+    padding: 0;
+}
 
 :root {
   --radius: 0.625rem;
@@ -114,6 +152,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

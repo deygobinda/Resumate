@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import PersonalDetails from './from/PersonalDetails'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight, LayoutGridIcon } from 'lucide-react'
-import EducationalDetails from './from/EducationalDetails'
+import Summary from './from/Summary'
+import Experience from './from/Experience'
 
 const FormSection = () => {
   const [activeFormIndex , setActiveFormIndex] = useState(1);
-  const [enableNext , setEnableNext] = useState(false);
+  const [enableNext , setEnableNext] = useState(true);
   return (
     <div>
       <div className='flex justify-between items-center'>
@@ -17,7 +18,8 @@ const FormSection = () => {
         </div>
       </div>
       {activeFormIndex == 1 && <PersonalDetails enableNext={(v) => setEnableNext(v)}/> }
-      {activeFormIndex == 2 && <EducationalDetails/> }
+      {activeFormIndex == 2 && <Summary enabledNext={(v) => setEnableNext(v)}/> }
+      {activeFormIndex == 3 && <Experience enabledNext={(v) => setEnableNext(v)}/> }
     </div>
   )
 }

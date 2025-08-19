@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ResumeInfoContex } from '@/contex/ResumeInfoContex'
-import React, { useContext, useState } from 'react'
+import { ResumeInfoContext } from '@/context/ResumeInfoContext'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import GlobalApi from '../../../../../services/GlobalApi';
 import { Loader2 } from 'lucide-react';
@@ -10,9 +10,20 @@ import { toast } from "sonner"
 const PersonalDetails = ({ enableNext }) => {
 
     const params = useParams();
-    const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContex);
+    const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
     const [fromData, setFormData] = useState();
     const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        setFormData({
+            firstName: resumeInfo?.firstName,
+            lastName: resumeInfo?.lastName,
+            jobTitle: resumeInfo?.jobTitle,
+            email: resumeInfo?.email,
+            address: resumeInfo?.address,
+            phone: resumeInfo?.phone
+
+        })
+    }, [])
     const handleInputChange = (e) => {
         enableNext(false)
         const { name, value } = e.target;
@@ -35,7 +46,6 @@ const PersonalDetails = ({ enableNext }) => {
             enableNext(true)
             setLoading(false)
             toast("Details Updated", {
-                position: 'top-center',
                 style: {
                     '--normal-bg': 'var(--background)',
                     '--normal-text': 'light-dark(var(--color-purple-600), var(--color-purple-400))',
@@ -76,8 +86,14 @@ const PersonalDetails = ({ enableNext }) => {
                         <Input name="email" defaultValue={resumeInfo?.email} required onChange={handleInputChange} />
                     </div>
                 </div>
-                <div className='flex justify-end mt-3'>
-                    <Button type="submit" disabled={loading}>{loading ? <Loader2 className="animate-spin"/> : "Save"}</Button>
+                <div className="flex justify-end mt-3">
+                    <Button type="submit" size="sm" disabled={loading} className="relative w-20">
+                        {loading ? (
+                            <Loader2 className="animate-spin absolute left-1/2 -translate-x-1/2" />
+                        ) : (
+                            "Save"
+                        )}
+                    </Button>
                 </div>
             </form>
 

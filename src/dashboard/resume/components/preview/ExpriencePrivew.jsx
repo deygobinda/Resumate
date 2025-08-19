@@ -25,7 +25,10 @@ const ExpriencePrivew = ({ resumeInfo }) => {
             {experience?.city},
             {experience?.state},
           </h2>
-          <p className='text-xs my-2'> {experience.workSummery}</p>
+          {/* <p className='text-xs my-2'> {experience.workSummery}</p> */}
+          <div dangerouslySetInnerHTML={{__html:experience.workSummery}} className='text-xs'>
+
+          </div>
         </div>
       ))}
     </div>
